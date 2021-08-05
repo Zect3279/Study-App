@@ -1,44 +1,36 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>App</title>
   </head>
   <body>
-    <h1>線</h1>
-    <canvas id="line" width="100" height="100"></canvas>
-    <h1>四角</h1>
-    <canvas id="rectangle" width="100" height="100"></canvas>
-    <h1>円</h1>
-    <canvas id="circle" width="100" height="100"></canvas>
-    <script type="text/javascript">
-    //読み込み時に実行する
-    onload = function() {
-      /* 線を引く */
-      var line_canvas = document.getElementById("line"); 
-      var line_ctx = line_canvas.getContext("2d");
-      line_ctx.beginPath();
-      // 開始位置に移動する
-      line_ctx.moveTo(20, 20);
-      // 線を引く
-      line_ctx.lineTo(80, 80);
-      line_ctx.closePath();
-      line_ctx.stroke();
-      /* 四角を描く */
-      var rect_canvas = document.getElementById("rectangle");
-      var rect_ctx = rect_canvas.getContext("2d");
-      rect_ctx.beginPath();
-      // 四角を描く
-      rect_ctx.strokeRect(20, 20, 60, 60);
-      /* 色の付いた円を書く */
-      var cir_canvas = document.getElementById("circle");
-      var cir_ctx = cir_canvas.getContext("2d");
-      // 塗りつぶす色を指定する
-      cir_ctx.fillStyle = 'blue';
-      cir_ctx.beginPath();
-      // 円を描く位置を決める
-      cir_ctx.arc(50, 50, 40, 0, Math.PI * 2, false);
-      // 実際に円を書く
-      cir_ctx.fill();
-    }
-    </script>
+    <header>
+        <div class="book">公式</div>
+        <div class="execute">起動</div>
+    </header>
+    <div id="main">
+        <form id="send-message">
+          <p>問題：<input id="question" type="text" /></p>
+          <p>解答：<input id="answer" type="text" /></p>
+          <p>レベル：<input id="level" type="text" /></p>
+          <p>教材：<input id="text" type="text" /></p>
+          <button id="chat-btn" type="submit">Submit</button>
+        </form>
+        <ul id="messages"></ul>
+    </div>
+    <footer>
+        <!-- <p>ここに使用可能図形一覧を表示</p> -->
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+        <div class="shape"><span>あ</span></div>
+    </footer>
   </body>
 </html>

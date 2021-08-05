@@ -1,0 +1,87 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+
+/* ヘッダーのデザイン */
+
+.book {
+  color: #000;
+  background-color: #fff100;
+  border-bottom: 5px solid #ccc100;
+  width: 2em;
+  padding: 0.25em 0.5em;
+  left: 20px;
+  top: 10px;
+  position:relative;
+  text-align: center;
+}
+
+.book:active {
+  margin-top: 3px;
+  color: #000;
+  background: #fff20a;
+  border-bottom: 2px solid #ccc100;
+  width: 2em;
+  padding: 0.25em 0.5em;
+  left: 20px;
+  top: 10px;
+  position:relative;
+  text-align: center;
+}
+.execute {
+  color: #000;
+  background-color: #0026ff;
+  border-bottom: 5px solid #001dc2;
+  width: 2em;
+  padding: 0.25em 0.5em;
+  right: 20px;
+  top: 10px;
+  position:absolute;
+  text-align: center;
+}
+
+.execute:active {
+  margin-top: 3px;
+  color: #000;
+  background: #1437ff;
+  border-bottom: 2px solid #0021dd;
+  width: 2em;
+  padding: 0.25em 0.5em;
+  right: 20px;
+  top: 10px;
+  position:absolute;
+  text-align: center;
+}
+
+
+/* メインのデザイン */
+
+
+
+
+
+/* フッターのデザイン */
+
+footer {
+    background-color: aqua;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    display: flex;
+}
+
+.shape {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50%;
+    border:1px solid black;
+}
+
+.shape span {
+  text-align: center;
+}
