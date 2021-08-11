@@ -3,26 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" }},
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        },
+        "HTML-CSS": { matchFontHeight: false },
+        displayAlign: "left",
+        displayIndent: "2em"
+      });
+    </script>
     <title>App</title>
   </head>
   <body>
-    <header>
-        <div class="book">公式</div>
-        <div class="execute">起動</div>
-    </header>
-    <div id="main">
-        <form id="send-message">
-          <p>問題：<input id="question" type="text" /></p>
-          <p>解答：<input id="answer" type="text" /></p>
-          <p>レベル：<input id="level" type="text" /></p>
-          <p>教材：<input id="text" type="text" /></p>
-          <button id="chat-btn" type="submit">Submit</button>
-        </form>
-        <ul id="messages"></ul>
+    <div class="header">
+      <button class="book" type="button">公式</button>
+      <button class="execute" type="button">起動</button>
     </div>
-    <footer>
+    <div class="main">
+      <div id="content"></div>
+      <input type="button" value="button" id="xxx">
+
+    </div>
+    <div class="footer">
+      <div class="items">
         <!-- <p>ここに使用可能図形一覧を表示</p> -->
         <div class="shape"><span>あ</span></div>
         <div class="shape"><span>あ</span></div>
@@ -31,6 +41,8 @@
         <div class="shape"><span>あ</span></div>
         <div class="shape"><span>あ</span></div>
         <div class="shape"><span>あ</span></div>
-    </footer>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
