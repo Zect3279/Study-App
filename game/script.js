@@ -40,30 +40,34 @@
 
 
 // document.getElementById("book").addEventListener("click", showBook);
+// function showBook() {
+//   // bookContent = `<div class="bookContent"><p class="bookTitle">使用公式</p><div class="bookMain">2次方程式 $ax^2 + bx + c =0$ の根の公式は\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]</div>" `
+//   // document.getElementById("content").innerHTML = bookContent;
+//   alert('Click');
+// }        
+
+
 function showBook() {
-  // bookContent = `<div class="bookContent"><p class="bookTitle">使用公式</p><div class="bookMain">2次方程式 $ax^2 + bx + c =0$ の根の公式は\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]</div>" `
-  // document.getElementById("content").innerHTML = bookContent;
-  alert('Click');
+
+  mainContent = `\
+  <div class="bookContent">\
+    <p class="bookTitle">使用公式</p>\
+    <div class="bookMain">\
+      2次方程式 $ax^2 + bx + c =0$ の根の公式は\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
+    </div>\
+    <button class="clear" onclick="mainClear()">戻す</button>
+  </div>\
+  `
+  document.getElementById('content').innerHTML = mainContent;
+  console.log('公式表示');
+}
+
+function execute() {
+  alert('実行する');
+}
+
+function mainClear() {
+  document.getElementById('content').innerHTML = '';
 }
 
 
-
-// mainContent = `<p>hello</p>`
-
-// document.getElementById("content").innerHTML = mainContent;
-
-
-
-
-function butotnClick(){
-  alert('Click');
-}
-
-onload=function() {
-  let bookButton = document.getElementById('book');
-  bookButton.onclick = showBook;
-  
-  let testButton = document.getElementById('xxx');
-  testButton.onclick = butotnClick;
-
-}

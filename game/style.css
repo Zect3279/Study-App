@@ -58,7 +58,7 @@
 
 /* メインのデザイン */
 
-.main {
+main {
   background-color: #b7dbff;
   position: absolute;
   top: 0;
@@ -76,7 +76,7 @@
 
 /* フッターのデザイン */
 
-.footer {
+footer {
   background-color: aqua;
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
