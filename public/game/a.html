@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>動的にMathJaxを適用する</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.4/math.min.js"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+    $(function() {
+  
+      // 表示ボタン押下時
+      $("#display_button").on('click', function() {
+        
+          // id=result のdiv要素内に、第n項までの和の展開式と答えを追加
+          $("#result").html("\\begin\{align\} \n");
+          // $("#result").append("\\sum_{k=0}^{n=" + n + "} F_k = " + str_formula + "\n");
+          // $("#result").append(" = " + str_values + "\n");
+          // $("#result").append(" = " + sum + "\n");
+
+          $("#result").append("a &= b \\newline");
+          $("#result").append("  &= c");
+          $("#result").append("\\end\{align\}");
+          
+            // // 展開式に第k項を追加
+            // str_formula += "\\frac{1}{\\sqrt{5}} \\left\\{ \\left( \\frac{1+\\sqrt{5}}{2} \\right)^{" + k + "}"
+            //               + " - \\left( \\frac{1-\\sqrt{5}}{2} \\right)^{" + k + "} \\right\\} \\newline + ";
+                          
+          // id=result の要素をMathJaxで変換 ※ここが重要！！！
+          MathJax.Hub.Queue(["Typeset",MathJax.Hub,"result"]);
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h3>説明</h3>
+    <div>
+      <p>フィボナッチ数列の一般項は以下の式で表されます。</p>
+      <div>
+        \begin{align}
+          F_k = \frac{1}{\sqrt{5}} \left\{ \left( \frac{1+\sqrt{5}}{2} \right)^k
+                      - \left( \frac{1-\sqrt{5}}{2} \right)^k \right\}
+        \end{align}
+      </div>
+      <p>フィボナッチ数列の第0項から第n項までの和を計算します。</p>
+      <p>nに1〜10の整数を入力し、「表示」ボタンを押してください。</p>
+
+      \( n = \) <input type="text" id="para_n" size="3" maxlength="2" value=2>
+      <button type="button" id="display_button">表示</button>
+    </div>
+
+    <h3>出力結果</h3>
+    <div>
+      \begin{align}
+      x = \frac{- b \pm \textstyle\sqrt{b^2 - 4ac}}{2a}
+      \end{align}
+    </div>
+    <div>
+      \begin{align}
+      a &= b \\
+        &= c
+      \end{align}
+    </div>
+    <div>
+      \begin{align}
+      \end{align}
+    </div>
+    <div id=result></div>
+  </body>
+</html>
