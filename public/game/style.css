@@ -78,6 +78,10 @@ main {
   margin: 5% auto 3% auto;
 }
 
+.bookMain {
+  text-align: center;
+}
+
 .clear {
   display: inline-block;
   padding: 0.5em 1em;
