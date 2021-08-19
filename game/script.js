@@ -47,20 +47,29 @@
 // }        
 
 
-function showBook() {
+// function showBook() {
 
-  mainContent = `\
-  <div class="bookContent">\
-    <p class="bookTitle">使用公式</p>\
-    <div class="bookMain">\
-      2次方程式 $ax^2 + bx + c =0$ の根の公式は\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]
-    </div>\
-    <button class="clear" onclick="mainClear()">戻す</button>
-  </div>\
-  `
-  document.getElementById('content').innerHTML = mainContent;
-  console.log('公式表示');
-}
+//   mainContent = `\
+//   <div class="bookContent">\
+//     <p class="bookTitle">使用公式</p>\
+//     <div class="bookMain" id="book">\
+      
+//     </div>\
+//     <button class="clear" onclick="mainClear()">戻す</button>
+//   </div>\
+//   `;
+//   document.getElementById('content').innerHTML = mainContent;
+//   giveBook();
+//   console.log('公式表示');
+// }
+
+// function giveBook() {
+//   const mathText = document.getElementById('book');
+//   mathText.innerText = '2次方程式 $ax^2 + bx + c =0$ の根の公式は\[x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]';
+//   MathJax.typeset(mathText);
+
+//   // MathJax.Hub.Typeset(elem);
+// }
 
 function execute() {
   alert('実行する');
