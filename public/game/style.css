@@ -4,6 +4,10 @@
     overflow-wrap: break-word;
 }
 
+body {
+  background-image: url("../back.jpg");
+}
+
 
 /* ヘッダーのデザイン */
 
@@ -60,7 +64,7 @@
 /* メインのデザイン */
 
 main {
-  background-color: #b7dbff;
+  background-color: rgba(183, 219, 255, 0.7);
   position: absolute;
   top: 0;
   right: 0;

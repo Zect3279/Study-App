@@ -7,52 +7,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.4/math.min.js"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>
-      $(function() {
-        $("#book").click(function() {
-          $("#content").html(`\
-          <div class="bookContent">\
-            <p class="bookTitle">使用公式</p>\
-            <div class="bookMain" id="bookMain"></div>\
-            <button class="clear" onclick="mainClear()">戻す</button>
-          </div>\
-          `);
-          $("#bookMain").html("\\begin\{align\}");
-          // $("#result").append("\\sum_{k=0}^{n=" + n + "} F_k = " + str_formula + "\n");
-          // $("#result").append(" = " + str_values + "\n");
-          // $("#result").append(" = " + sum + "\n");
-
-          $("#bookMain").append("2次方程式 \\newline ax^2 + bx + c =0 \\newline の根の公式は \\newline");
-          $("#bookMain").append(" x = \\frac{- b \\pm \\textstyle\\sqrt{b^2 - 4ac}}{2a}");
-          $("#bookMain").append("\\end\{align\}");
-          
-          // id=result の要素をMathJaxで変換 ※ここが重要！！！
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub,"bookMain"]);
-        });
-      });
-    </script>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
     <title>App</title>
   </head>
   <body>
     <header>
       <button class="book" id="book">公式</button>
-      <button class="execute" onclick="execute()">起動</button>
+      <!-- <button class="execute" onclick="tri()">起動</button> -->
+      <button class="execute" id="execute">起動</button>
     </header>
     <main>
 <!-- ここに構築してみて、それをそのままscript.jsに移行する -->
-      <div id="content"></div>
+      <div id="content">
+        <p class="bookTitle">下から図形を選べ</p>
+        <p class="bookMain">選択するとタイマーが開始します</p>
+        <canvas id="axisCanvas"></canvas>
+      </div>
+      
     </main>
     <footer>
       <div class="items">
         <!-- <p>ここに使用可能図形一覧を表示</p> -->
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
-        <div class="shape"><span>あ</span></div>
+        <canvas class="shape" id="tri" onclick="tri()"></canvas>
+        <canvas class="shape" id="tri" onclick="tri()"></canvas>
+        <canvas class="shape" id="tri" onclick="tri()"></canvas>
       </div>
     </footer>
   </body>
