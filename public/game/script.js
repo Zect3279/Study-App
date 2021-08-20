@@ -1,5 +1,6 @@
 
 var datas = {};
+var onGame = false;
 
 function execute() {
   alert('実行する');
@@ -20,8 +21,31 @@ function bookClear() {
   `);
 }
 
+function answer() {
+  const answer = document.getElementById("answer");
+  const Ans = answer.value;
+  answer.value = "";
+  console.log(`入力：${Ans}\n回答：${datas["an"]}`);
+  if (Ans == datas["an"]) {
+    $("#content").html(`\
+    <div class="bookContent">
+      <p class="bookTitle">正解<br>下から図形を選べ</p>
+    </div>
+    `)
+  } else {
+    $("#content").html(`\
+    <div class="bookContent">
+      <p class="bookTitle">不正解<br>下から図形を選べ</p>
+    </div>
+    `)
+  }
+}
+
 $(function() {
   $("#book").click(function() {
+    if (onGame == false) {
+      return;
+    }
     $("#content").html(`\
     <div class="bookContent">\
       <p class="bookTitle">使用公式</p>\
@@ -43,6 +67,24 @@ $(function() {
 
 url = `qu.json`;
 
+function qu(type) {
+  if (onGame == false) {
+    onGame = true;
+  }
+  switch (type) {
+    case "tri":
+      tri();
+      break;
+    case "rec":
+      rec();
+      break;
+    case "line":
+      line();
+      break;
+  }
+}
+
+
 function tri() {
   $.getJSON(url, (data) => {
     var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
@@ -55,7 +97,7 @@ function tri() {
     <div class="bookContent">\
       <p class="bookTitle">問題</p>\
       <div class="bookMain" id="quMain">${datas["qu"]}</div>\
-      <input type="text" name="answer" id="answer">\
+      <input type="text" name="answer" id="answer">${datas["type"]}<br>\
       <button class="clear" onclick="answer()">回答</button>\
     </div>\
     `);
@@ -63,27 +105,47 @@ function tri() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  let ctx = document.getElementById('tri').getContext('2d');
-   
-  // 頂点の座標を用意
-  let p1 = {x:150, y:10};   // 上
-  let p2 = {x:10,  y:280};  // 左
-  let p3 = {x:280, y:280};  // 右
+function line() {
+  $.getJSON(url, (data) => {
+    var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
+    // var numIndex = 0;
+    // var index = numIndex.toString;
+    var dataList = data["直線"];
+    datas = dataList[numIndex];
+    console.log(`qu=${datas["qu"]}, an=${datas["an"]}`);
+    $("#content").html(`\
+    <div class="bookContent">\
+      <p class="bookTitle">問題</p>\
+      <div class="bookMain" id="quMain">${datas["qu"]}</div>\
+      <input type="text" name="answer" id="answer">${datas["type"]}<br>\
+      <button class="clear" onclick="answer()">回答</button>\
+    </div>\
+    `);
+    // $("quMain").html(datas["qu"]);
+  });
+}
 
-  ctx.beginPath();
-  ctx.moveTo(p1.x, p1.y);      // 始点に移動
-  ctx.lineTo(p2.x, p2.y);      // 左側の頂点まで線を描く
-  ctx.lineTo(p3.x, p3.y);      // 右側の頂点まで線を描く
-  ctx.lineTo(p1.x, p1.y);      // 始点まで線を描く
+function rec() {
+  $.getJSON(url, (data) => {
+    var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
+    // var numIndex = 0;
+    // var index = numIndex.toString;
+    var dataList = data["四角形"];
+    datas = dataList[numIndex];
+    console.log(`qu=${datas["qu"]}, an=${datas["an"]}`);
+    $("#content").html(`\
+    <div class="bookContent">\
+      <p class="bookTitle">問題</p>\
+      <div class="bookMain" id="quMain">${datas["qu"]}</div>\
+      <input type="text" name="answer" id="answer">${datas["type"]}<br>\
+      <button class="clear" onclick="answer()">回答</button>\
+    </div>\
+    `);
+    // $("quMain").html(datas["qu"]);
+  });
+}
 
-  ctx.strokeStyle = "tomato";  // 線の色
-  ctx.lineWidth = 5;           // 線の太さ
-  ctx.stroke();
 
-  ctx.fillStyle = "orange";    // 塗りつぶす色
-  ctx.fill();                  // 塗りつぶし
-});
 
 var canvas; // canvas要素(HTMLCanvasElement)
 var ctx; // 2Dコンテキスト(CanvasRenderingContext2D)
@@ -122,3 +184,51 @@ window.onload = function() {
     ctx.fillText('( ' + mouseX + ', ' + mouseY + ' )', canvasW - 20, canvasH - 20, maxWidth);
   }
 };
+
+onload = function() {
+  /* 線を引く */
+  var line_canvas = document.getElementById("line"); 
+  var line_ctx = line_canvas.getContext("2d");
+  line_ctx.beginPath();
+  // 開始位置に移動する
+  line_ctx.moveTo(10, 10);
+  // 線を引く
+  line_ctx.lineTo(40, 40);
+  line_ctx.closePath();
+  line_ctx.stroke();
+  /* 四角を描く */
+  var rect_canvas = document.getElementById("rectangle");
+  var rect_ctx = rect_canvas.getContext("2d");
+  rect_ctx.beginPath();
+  // 四角を描く
+  rect_ctx.strokeRect(10, 10, 30, 30);
+  // /* 色の付いた円を書く */
+  // var cir_canvas = document.getElementById("circle");
+  // var cir_ctx = cir_canvas.getContext("2d");
+  // // 塗りつぶす色を指定する
+  // cir_ctx.fillStyle = 'blue';
+  // cir_ctx.beginPath();
+  // // 円を描く位置を決める
+  // cir_ctx.arc(25, 25, 20, 0, Math.PI * 2, false);
+  // // 実際に円を書く
+  // cir_ctx.fill();
+  // 三角形
+  var ctx_tri = document.getElementById('tri');
+  var context = ctx_tri.getContext("2d");
+
+  // the triangle
+  context.beginPath();
+  context.moveTo(25, 10);
+  context.lineTo(10, 40);
+  context.lineTo(40, 40);
+  context.closePath();
+
+  // the outline
+  context.lineWidth = 2;
+  context.strokeStyle = '#666666';
+  context.stroke();
+
+  // the fill color
+  // context.fillStyle = "#FFCC00";
+  // context.fill();
+}
