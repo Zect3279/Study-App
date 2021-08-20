@@ -1,6 +1,7 @@
 
 var datas = {};
 var onGame = false;
+var quPoints = 1;
 
 function execute() {
   alert('実行する');
@@ -29,9 +30,13 @@ function answer() {
   if (Ans == datas["an"]) {
     $("#content").html(`\
     <div class="bookContent">
-      <p class="bookTitle">正解<br>下から図形を選べ</p>
+      <p class="bookTitle">正解<br>${datas["point"]}ポイント 加算した<br><br>下から次の図形を選べ</p>
     </div>
     `)
+    // points += Number(datas["point"]);
+    quPoints += 1;
+    console.log(quPoints);
+    $("#pointCounter").html(`<p>${quPoints}</p>`);
   } else {
     $("#content").html(`\
     <div class="bookContent">
@@ -65,6 +70,7 @@ $(function() {
   });
 });
 
+
 url = `qu.json`;
 
 function qu(type) {
@@ -87,7 +93,7 @@ function qu(type) {
 
 function tri() {
   $.getJSON(url, (data) => {
-    var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
+    var numIndex = Math.floor(Math.random()*3); // 0~10までの整数
     // var numIndex = 0;
     // var index = numIndex.toString;
     var dataList = data["三角形"];
@@ -127,7 +133,7 @@ function line() {
 
 function rec() {
   $.getJSON(url, (data) => {
-    var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
+    var numIndex = Math.floor(Math.random()*3); // 0~10までの整数
     // var numIndex = 0;
     // var index = numIndex.toString;
     var dataList = data["四角形"];
@@ -147,43 +153,8 @@ function rec() {
 
 
 
-var canvas; // canvas要素(HTMLCanvasElement)
-var ctx; // 2Dコンテキスト(CanvasRenderingContext2D)
-var canvasW = 400; // canvas要素の横幅(px)
-var canvasH = 400; // canvas要素の縦幅(px)
-var mouseX; // 最後にクリックされた位置のx座標
-var mouseY; // 最後にクリックされた位置のy座標
-
-window.onload = function() {
-  // canvas要素を取得し、サイズ設定
-  canvas = document.getElementById('axisCanvas');
-  canvas.width = canvasW;
-  canvas.height = canvasH;
-
-  // 描画のために2Dコンテキスト取得
-  ctx = canvas.getContext('2d');
-
-  // クリックイベントの登録
-  canvas.onclick = function(e) {
-    // 一度描画をクリア
-    ctx.clearRect(0, 0, canvasW, canvasH);
-
-    // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
-    var rect = e.target.getBoundingClientRect();
-    mouseX = e.clientX - Math.floor(rect.left) - 2;
-    mouseY = e.clientY - Math.floor(rect.top) - 2;
-
-    // クリック位置を中心に円を描画
-    ctx.beginPath();
-    ctx.arc(mouseX, mouseY, 5, 0, Math.PI * 2, false);
-    ctx.fill();
-
-    // 座標の表示テキストを描画
-    var maxWidth = 100;
-    ctx.textAlign = 'right';
-    ctx.fillText('( ' + mouseX + ', ' + mouseY + ' )', canvasW - 20, canvasH - 20, maxWidth);
-  }
-};
+// var counter = document.getElementById("counter");
+// counter.innerHTML = points.toString;
 
 onload = function() {
   /* 線を引く */

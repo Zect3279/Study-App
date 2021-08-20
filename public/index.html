@@ -7,11 +7,32 @@
   <title>Document</title>
   <style>
   body {
-    background-image: url("../back.jpg");
+    background-image: url("./back.jpg");
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    display: block;
+  }
+  .btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+    display: block;
   }
   </style>
 </head>
 <body>
-  <a href="game/index.html">ゲーム開始</a>
+  <a class="btn" href="game/index.html">ゲーム開始</a>
 </body>
 </html>
