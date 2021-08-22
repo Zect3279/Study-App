@@ -94,7 +94,7 @@ function qu(type) {
     setInterval("countDown()", 1000);
     setTimeout(function(){
       const count = document.getElementById("pointCounter");
-      window.location.href = `../result/index.html?id=${conut.value}`;
+      window.location.href = `../result/index.html?id=${count.value}`;
     }, 20*1000);
   }
   switch (type) {
