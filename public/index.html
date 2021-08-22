@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="/__/firebase/8.10.0/firebase-app.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <!-- Initialize Firebase -->
+  <script src="/__/firebase/init.js"></script>
   <title>Document</title>
   <style>
   body {
@@ -12,6 +18,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 15% 10% 25% 10%;
+    width: 80%;
+    height: 60%;
+    text-align: center;
   }
   .btn {
     display: inline-block;
@@ -33,6 +50,8 @@
   </style>
 </head>
 <body>
-  <a class="btn" href="game/index.html">ゲーム開始</a>
+  <main>
+    <a class="btn" href="game/index.html">ゲーム開始</a>
+  </main>
 </body>
 </html>

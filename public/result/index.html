@@ -7,7 +7,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.4/math.min.js"></script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="script.js" charset="utf-8"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.10.0/firebase-app.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -15,31 +14,40 @@
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
     <title>App</title>
+    <script>
+      function getParam(){
+        var url   = location.href
+        parameters    = url.split("?")
+        params   = parameters[1].split("&")
+        var paramsArray = []
+        for ( it = 0; it < params.length; it++ ) {
+          neet = params[it].split("=")
+          paramsArray.push(neet[0])
+          paramsArray[neet[0]] = neet[1]
+        }
+        var categoryKey = paramsArray["id"]
+        return categoryKey
+      }
+
+      onload = function () {
+        const point = getParam();
+        $("#result").html(`${point}点`);
+      }
+    </script>
   </head>
   <body>
-    <header>
-      <button class="book" id="book">公式</button>
-      <!-- <div class="counter" id="pointCounter"><p>0</p></div> -->
-      <input type="text" value="0" class="counter" id="pointCounter">
-      <button class="execute" id="execute">20秒</button>
-    </header>
     <main>
 <!-- ここに構築してみて、それをそのままscript.jsに移行する -->
       <div id="content">
-        <p class="bookTitle">下から図形を選べ</p>
+        <p class="bookTitle">結果</p>
         <!-- <p class="bookMain">選択するとタイマーが開始します</p> -->
-        <canvas id="axisCanvas"></canvas>
+        <p class="bookTitle" id="result"></p>
+        <br>
+        <br>
+        <a class="btn" href="../game/index.html">もう一度遊ぶ</a>
       </div>
       
     </main>
-    <footer>
-      <div class="items">
-        <!-- <p>ここに使用可能図形一覧を表示</p> -->
-        <canvas class="shape" id="tri" onclick="qu('tri')" width="50px" height="50px"></canvas>
-        <!-- <canvas class="shape" id="line" onclick="qu('line')" width="50px" height="50px"></canvas> -->
-        <canvas class="shape" id="rectangle" onclick="qu('rac')" width="50px" height="50px"></canvas>
-      </div>
-    </footer>
   </body>
 </html>
 

@@ -2,6 +2,7 @@
 var datas = {};
 var onGame = false;
 var quPoints = 1;
+var tiCounter = 20;
 
 function execute() {
   alert('実行する');
@@ -22,6 +23,16 @@ function bookClear() {
   `);
 }
 
+
+function countDown() {
+  $("#execute").html(`${tiCounter}秒`);
+  tiCounter--;
+  if (tiCounter == 0) {
+    clearInterval(this)
+  }
+}
+
+
 function answer() {
   const answer = document.getElementById("answer");
   const Ans = answer.value;
@@ -34,9 +45,13 @@ function answer() {
     </div>
     `)
     // points += Number(datas["point"]);
-    quPoints += 1;
-    console.log(quPoints);
-    $("#pointCounter").html(`<p>${quPoints}</p>`);
+    // quPoints += 1;
+    // console.log(quPoints);
+    // $("#pointCounter").html(`<p>${quPoints}</p>`);
+    const count = document.getElementById("pointCounter");
+    console.log(count.value);
+    count.value++;
+    console.log(count.value);
   } else {
     $("#content").html(`\
     <div class="bookContent">
@@ -76,6 +91,11 @@ url = `qu.json`;
 function qu(type) {
   if (onGame == false) {
     onGame = true;
+    setInterval("countDown()", 1000);
+    setTimeout(function(){
+      const count = document.getElementById("pointCounter");
+      window.location.href = `../result/index.html?id=${conut.value}`;
+    }, 20*1000);
   }
   switch (type) {
     case "tri":
@@ -93,11 +113,11 @@ function qu(type) {
 
 function tri() {
   $.getJSON(url, (data) => {
-    var numIndex = Math.floor(Math.random()*3); // 0~10までの整数
+    // var numIndex = Math.floor(Math.random()*3); // 0~2までの整数
     // var numIndex = 0;
     // var index = numIndex.toString;
     var dataList = data["三角形"];
-    datas = dataList[numIndex];
+    datas = dataList[Math.floor(Math.random()*3)];
     console.log(`qu=${datas["qu"]}, an=${datas["an"]}`);
     $("#content").html(`\
     <div class="bookContent">\
@@ -113,11 +133,11 @@ function tri() {
 
 function line() {
   $.getJSON(url, (data) => {
-    var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
+    // var numIndex = Math.floor(Math.random()*2); // 0~10までの整数
     // var numIndex = 0;
     // var index = numIndex.toString;
     var dataList = data["直線"];
-    datas = dataList[numIndex];
+    datas = dataList[Math.floor(Math.random()*3)];
     console.log(`qu=${datas["qu"]}, an=${datas["an"]}`);
     $("#content").html(`\
     <div class="bookContent">\
@@ -133,11 +153,11 @@ function line() {
 
 function rec() {
   $.getJSON(url, (data) => {
-    var numIndex = Math.floor(Math.random()*3); // 0~10までの整数
+    // var numIndex = Math.floor(Math.random()*3); // 0~10までの整数
     // var numIndex = 0;
     // var index = numIndex.toString;
     var dataList = data["四角形"];
-    datas = dataList[numIndex];
+    datas = dataList[Math.floor(Math.random()*3)];
     console.log(`qu=${datas["qu"]}, an=${datas["an"]}`);
     $("#content").html(`\
     <div class="bookContent">\
@@ -157,16 +177,16 @@ function rec() {
 // counter.innerHTML = points.toString;
 
 onload = function() {
-  /* 線を引く */
-  var line_canvas = document.getElementById("line"); 
-  var line_ctx = line_canvas.getContext("2d");
-  line_ctx.beginPath();
-  // 開始位置に移動する
-  line_ctx.moveTo(10, 10);
-  // 線を引く
-  line_ctx.lineTo(40, 40);
-  line_ctx.closePath();
-  line_ctx.stroke();
+  // /* 線を引く */
+  // var line_canvas = document.getElementById("line"); 
+  // var line_ctx = line_canvas.getContext("2d");
+  // line_ctx.beginPath();
+  // // 開始位置に移動する
+  // line_ctx.moveTo(10, 10);
+  // // 線を引く
+  // line_ctx.lineTo(40, 40);
+  // line_ctx.closePath();
+  // line_ctx.stroke();
   /* 四角を描く */
   var rect_canvas = document.getElementById("rectangle");
   var rect_ctx = rect_canvas.getContext("2d");

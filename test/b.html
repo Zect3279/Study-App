@@ -3,6 +3,8 @@
     <meta charset="utf-8" />
   </head>
   <body>
+    <button onclick="rando()"></button>
+    <input type="text" value="0" class="counter" id="pointCounter">
     <h1>線</h1>
     <canvas id="line" width="50px" height="50px"></canvas>
     <h1>四角</h1>
@@ -12,6 +14,12 @@
     <h1>三角形</h1>
     <canvas id="tri" width="50px" height="50px"></canvas>
     <script type="text/javascript">
+    function rando() {
+      const count = document.getElementById("pointCounter");
+      count.value = Math.floor(Math.random()*3);
+    }
+
+
     //読み込み時に実行する
     onload = function() {
       /* 線を引く */
