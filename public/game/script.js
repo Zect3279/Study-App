@@ -21,6 +21,7 @@ function bookClear() {
     <button class="clear" onclick="answer()">回答</button>\
   </div>\
   `);
+  queque();
 }
 
 
@@ -110,6 +111,15 @@ function qu(type) {
   }
 }
 
+function queque() {
+  
+  $("#quMain").html("\\begin\{align\}");
+
+  $("#quMain").append(datas["qu"]);
+
+  $("#quMain").append("\\end\{align\}");
+  MathJax.Hub.Queue(["Typeset",MathJax.Hub,"quMain"]);
+}
 
 function tri() {
   $.getJSON(url, (data) => {
@@ -128,6 +138,7 @@ function tri() {
     </div>\
     `);
     // $("quMain").html(datas["qu"]);
+    queque();
   });
 }
 
@@ -148,6 +159,7 @@ function line() {
     </div>\
     `);
     // $("quMain").html(datas["qu"]);
+    queque();
   });
 }
 
@@ -168,6 +180,7 @@ function rec() {
     </div>\
     `);
     // $("quMain").html(datas["qu"]);
+    queque();
   });
 }
 
@@ -177,22 +190,22 @@ function rec() {
 // counter.innerHTML = points.toString;
 
 onload = function() {
-  // /* 線を引く */
-  // var line_canvas = document.getElementById("line"); 
-  // var line_ctx = line_canvas.getContext("2d");
-  // line_ctx.beginPath();
-  // // 開始位置に移動する
-  // line_ctx.moveTo(10, 10);
-  // // 線を引く
-  // line_ctx.lineTo(40, 40);
-  // line_ctx.closePath();
-  // line_ctx.stroke();
-  /* 四角を描く */
-  var rect_canvas = document.getElementById("rectangle");
-  var rect_ctx = rect_canvas.getContext("2d");
-  rect_ctx.beginPath();
-  // 四角を描く
-  rect_ctx.strokeRect(10, 10, 30, 30);
+  /* 線を引く */
+  var line_canvas = document.getElementById("line"); 
+  var line_ctx = line_canvas.getContext("2d");
+  line_ctx.beginPath();
+  // 開始位置に移動する
+  line_ctx.moveTo(10, 10);
+  // 線を引く
+  line_ctx.lineTo(40, 40);
+  line_ctx.closePath();
+  line_ctx.stroke();
+  // /* 四角を描く */
+  // var rect_canvas = document.getElementById("rectangle");
+  // var rect_ctx = rect_canvas.getContext("2d");
+  // rect_ctx.beginPath();
+  // // 四角を描く
+  // rect_ctx.strokeRect(10, 10, 30, 30);
   // /* 色の付いた円を書く */
   // var cir_canvas = document.getElementById("circle");
   // var cir_ctx = cir_canvas.getContext("2d");

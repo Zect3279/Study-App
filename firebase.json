@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "studyapp-b7dda",
     "public": "public",
     "ignore": [
       "firebase.json",
